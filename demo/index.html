@@ -9,6 +9,31 @@
       */
     </script>
     <link rel="import" href="demo-element.html">
+    <custom-style>
+      <style>
+        html {
+          --icon-toggle-outline-color: red;
+          --iron-icon-width: 40px;
+          --iron-icon-height: 40px;
+        }
+
+        demo-element {
+          --icon-toggle-pressed-color: blue;
+          --icon-toggle-color: purple;
+        }
+
+        /* This does not work, because iron-icon is not in this document scope*/
+        iron-icon {
+          --iron-icon-width: 40px;
+          --iron-icon-height: 40px;
+        }
+
+        /* This does not work; we can only select html or polymer elements */
+        body {
+          --icon-toggle-color: purple;
+        }
+      </style>
+    </custom-style>
   </head>
   <body>
     <demo-element></demo-element>

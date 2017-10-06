@@ -6,17 +6,30 @@
   <template>
 
     <style>
-      /* shadow DOM styles go here */
+      /*
+        shadow DOM styles go here
+
+        To allow users to style a component, we can use custom CSS properties.
+        You apply a custom property inside your element using the var function:
+
+        background-color: var(--my-custom-property, defaultValue);
+
+        Where --my-custom-property is a custom property name, always starting with
+        two dashes and a defaultValue is an optional CSS value that it is used if
+        the custom property is not set.
+      */
+
       :host {
         display: inline-block;
       }
+
       iron-icon {
-        fill: rgba(0, 0, 0, 0);
-        stroke: currentcolor;
+        fill: var(--icon-toggle-color, rgba(0, 0, 0, 0));
+        stroke: var(--icon-toggle-outline-color, currentcolor);
       }
 
       :host([pressed]) iron-icon {
-        fill: currentcolor;
+        fill: var(--icon-toggle-pressed-color, currentcolor);
       };
     </style>
 
