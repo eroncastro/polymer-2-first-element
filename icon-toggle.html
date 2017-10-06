@@ -10,10 +10,19 @@
       :host {
         display: inline-block;
       }
+      iron-icon {
+        fill: rgba(0, 0, 0, 0);
+        stroke: currentcolor;
+      }
+
+      :host([pressed]) iron-icon {
+        fill: currentcolor;
+      };
     </style>
 
     <!-- shadow DOM goes here -->
-    <span>Not much here yet.</span>
+    <iron-icon icon="[[toggleIcon]]">
+    </iron-icon>
   </template>
 
   <script>
@@ -21,6 +30,30 @@
       static get is() {
         return 'icon-toggle';
       }
+      static get properties() {
+        /*
+          value -> default value.
+          notify -> tells Polymer to dispatch property change events
+                    whenever the property value changes. This lets the
+                    change be observed by other nodes, making state changes
+                    observable outside the element.
+          reflectToAttribute -> tells Polymer to update the corresponding
+                                attribute when the property changes, making
+                                the state visibile in the DOM tree.
+        */
+        return {
+          pressed: {
+            type: Boolean,
+            value: false,
+            notify: true,
+            reflectToAttribute: true
+          },
+          toggleIcon: {
+            type: String
+          }
+        };
+      }
+
       constructor() {
         super();
       }
